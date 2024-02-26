@@ -338,7 +338,6 @@ The top two features influenced the model developed for the Low Amount dataset a
 
 ![fig19](images/feature_importance_mdi.png)
 
-
 The top two features influenced the model developed for the High Amount dataset are **"USD_Account"** and **“Sender_Cat_JPMC_CLIENT”**.
 
 ![fig19](images/feature_importance_mdi_high_amount.png)
@@ -367,3 +366,5 @@ The project can be continued by further optimizing the performance of the model.
 ## 8. Jupyter Notebook
 
 Please refer to the [Direct Marketing Jupiter Notebook](https://github.com/TLe2023/DirectMarketing/blob/main/Bank_Direct_Marketing_7_features_Final.ipynb) for more information.
+
+This publication includes or references synthetic data provided by J.P. Morgan.
