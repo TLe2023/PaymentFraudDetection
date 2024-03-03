@@ -266,7 +266,7 @@ Model algorithm and selection criteria are summarized in the table below:
 
 ![scores3](images/scores_full_test.png)
 
-- **Confusion Matrix:** DT has the highest number of false positives (FP) and the lowest number of false negatives (FN). The trade-off between Precision and Recall is presented in the confusion matrix of the two remaining models. While HGBT has the lowest FN, its FP is higher than that of XGB and FP impacts user experience. In other words, HGBT correctly classified more "Fraud" cases, it also incorrectly classified more legitimate transactions as "Fraud".
+- **Confusion Matrix:** DT has the highest number of false positives (FP) and the lowest number of false negatives (FN). The confusion matrices of the XGB and HBGT models are alike. However, they present the trade-off between Precision and Recall. While HGBT has the lower number of FN, its FP is higher than that of XGB and higher FP impacts user experience. In other words, HGBT correctly classified more "Fraud" cases, it also incorrectly classified more legitimate transactions as "Fraud".
 
 ![fig12](images/confusionmatrix25.png)
 
@@ -342,8 +342,8 @@ The key difference between the tree in the XGB ensemble of the Low Amount datase
 
 The above confusion matrix can be interpreted as follows:
 
-- In the test set, there are 61,344 positive or "Fraud” observations and the model correctly predicted 55,613 instances but missed 5,731 positive instances.
-- Of 61,344 negative or "Legit" instances, it correctly classified 57,558 observations and incorrectly classified 3,786 observations.
+- In the test set, there are 61,344 positive or "Fraud” observations and the model correctly predicted 55,672 instances but missed 5,672 positive instances.
+- Of 61,344 negative or "Legit" instances, it correctly classified 57,481 observations and incorrectly classified 3,863 observations.
 - The Precision, Recall, F1 scores are summarized below 
   ![fig16](images/classification_report.png)
 
