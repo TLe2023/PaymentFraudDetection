@@ -8,13 +8,13 @@ To address this business objective, the goal of this project is to build a predi
 
 ## 2. Executive Summary
 
-This publication includes or references synthetic data provided by J.P. Morgan. Exploratory data analysis suggested that the fraudulent rate increases with the increase of the transactional amount. The original, large, and extremely imbalanced dataset was split into two datasets, a **Low Amount dataset**, and a **High Amount dataset**, with the upper fence value of the transactional amount - **USD 1,000** - as the threshold so that different strategies of model training and evaluation would be employed for each dataset.
+This publication includes or references synthetic data provided by J.P. Morgan. Exploratory data analysis suggested that the fraudulent rate increases with the increase of the transaction amount. The original large and imbalanced dataset was split into two datasets, a **Low Amount dataset**, and a **High Amount dataset**, with **USD 1,000** - as the threshold between the two datasets; this allows for different strategies of model training and evaluation for each dataset.
 
-Each dataset was balanced to 50/50 before training the models. Accuracy was used to measure the performance of the models trained in both Low and High Amount datasets. In addition, F1 score (a balance of Precision and Recall) was applied to the Low Amount dataset while F2 score (more weight was placed on Recall) was used to measure the performance of the models trained on the High Amount dataset. Additional measurements and criteria such as ROC-AUC (receiver operating characteristic – area under curve), AP (average precision), speed and interpretability were considered when evaluating the models.
+Each dataset was balanced to have the same number of fraudulant and non-fraudulant samples before training the models. Accuracy was used to measure the performance of the models trained in both Low and High Amount datasets. In addition, F1 score (a balance of Precision and Recall) was applied to the Low Amount dataset while F2 score (more weight was placed on Recall) was used to measure the performance of the models trained on the High Amount dataset. Additional measurements and criteria such as ROC-AUC (receiver operating characteristic – area under curve), AP (average precision), speed and interpretability were considered when evaluating the models.
 
-On the **Low Amount** dataset, **eXtreme Gradient Boosting (XGB)** was selected based on its speed, performance and its acceptable interpretability. It achieved **92% Accuracy, 92% F1, 98% ROC-AUC** and **98% AP** scores. 
+On the **Low Amount** dataset, **eXtreme Gradient Boosting (XGB)** was selected based on its speed, performance and its acceptable interpretability. It achieved **92% Accuracy score, 92% F1 score, 98% ROC-AUC score** and **98% AP score**. 
 
-On the **High Amount** dataset, **Decision Trees (DT)** was selected with **perfect scores** of **100% Accuracy, F2, ROC-AUC and AP**.
+On the **High Amount** dataset, **Decision Trees (DT)** was selected with **perfect scores** of **100% for Accuracy, F2, ROC-AUC and AP**.
 
 ## 3. Methodology
 
@@ -24,7 +24,7 @@ The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is appl
 
 **Phases of the CRISP-DM Process Model for Data Mining**
 
-After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be cleansed and prepared to handle any integrity issues. Features will be engineered for modelling. Next, the dataset was split into a Low Amount dataset and a High Amount dataset. Four predictive classification models will be built with default parameters with a cross-validation method applied on the Low Amount dataset. They are **Decision Trees (DT), Histogram Gradient Boosting (HGBT), eXtreme Gradient Boosting (XGB), and AdaBoost (AB)** classification models. Two models, **Decision Trees (DT) and Logistic Regression (LR)**, were built on the High Amount dataset. After eliminating one model on Low Amount dataset, the remaining three models were fine-tuned with optimal parameters. Lastly, these models or classifiers will be compared so that the best model, based on a set of predefined criteria, will be evaluated, and recommended.
+After understanding the business objectives, the collected data was explored by using visualizations and probability distributions to form initial findings and hypotheses. Then, the data was cleansed and prepared to handle any integrity issues. Features were engineered for modelling. Next, the dataset was split into a Low Amount dataset and a High Amount dataset. Four predictive classification models were built with default parameters with a cross-validation method applied on the Low Amount dataset. They were **Decision Trees (DT), Histogram Gradient Boosting (HGBT), eXtreme Gradient Boosting (XGB), and AdaBoost (AB)** classification models. Two models, **Decision Trees (DT) and Logistic Regression (LR)**, were built on the High Amount dataset. After eliminating one model on Low Amount dataset, the remaining three models were fine-tuned with optimal parameters. Lastly, these models or classifiers were compared so that the best model, based on a set of predefined criteria, would be evaluated and recommended.
 
 ## 4. Data Understanding
 
@@ -54,11 +54,11 @@ Below are the attributes and descriptions of the initial data:
 
 #### 4.2.1 Data Quality
 
-**Null values:** The quality of the dataset is very decent although there are NULL values in the Sender and Receiver related categorical attributes. However, the missing information represents less than 15%. These missing values can later be dropped or imputed.
+**Null values:** The quality of the dataset is very decent although there are NULL values in the Sender and Receiver related categorical attributes. The missing information represents less than 15% and were imputed instead of being dropped.
 
 ![fig2](images/null.png)
 
-**Outliers:** Outliers present the "USA_amount" feature and the upper fence value is USD 1,000. In addition, the dataset contains transactions with zero amount.
+**Outliers:** Outliers present in the "USA_amount" feature and the upper fence value is USD 1,000. In addition, the dataset contains transactions with zero amount.
 
 <br>
 
@@ -82,7 +82,7 @@ However, the fraudulent rate increases with the increase of the transactional am
 
 #### 4.2.3 Target variable and the "USD_Amount" feature
 
-- Most payments were made with lesser amounts (the median value is USD 400) and there seemed to be less fraudulent activities in this range.
+- Most payments were made with lesser amounts (the median value was USD 400) and there seemed to be less fraudulent activities in this range.
 - For transactions at or above the upper fence amount which is USD 1,000, fraudulent loss concentrates within the range of USD 7,500 to USD 10,000.
 
 ![fig5](images/violin_plot_amount.png)
