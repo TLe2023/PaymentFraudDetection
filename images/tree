@@ -1,285 +1,42 @@
-digraph Tree {
-node [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;
-edge [fontname="helvetica"] ;
-0 [label=<Sender_Account &le; 0.0<br/>entropy = 1.0<br/>samples = 111534<br/>value = [55767, 55767]<br/>class = Legit>, fillcolor="#ffffff"] ;
-1 [label=<Transaction_Cat_PAYMENT &le; 0.5<br/>entropy = 0.666<br/>samples = 38664<br/>value = [31948, 6716]<br/>class = Legit>, fillcolor="#ea9b63"] ;
-0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label=<Bene_Account &le; 0.023<br/>entropy = 0.755<br/>samples = 30905<br/>value = [24189, 6716]<br/>class = Legit>, fillcolor="#eca470"] ;
-1 -> 2 ;
-3 [label=<Transaction_Cat_QUICK-PAYMENT &le; 0.009<br/>entropy = 0.684<br/>samples = 28379<br/>value = [23222, 5157]<br/>class = Legit>, fillcolor="#eb9d65"] ;
-2 -> 3 ;
-4 [label=<Bene_Account &le; 0.023<br/>entropy = 0.56<br/>samples = 20580<br/>value = [17884, 2696]<br/>class = Legit>, fillcolor="#e99457"] ;
-3 -> 4 ;
-5 [label=<Bene_Country &le; 0.011<br/>entropy = 0.628<br/>samples = 14496<br/>value = [12213, 2283]<br/>class = Legit>, fillcolor="#ea995e"] ;
-4 -> 5 ;
-6 [label=<entropy = 0.169<br/>samples = 1076<br/>value = [1049, 27]<br/>class = Legit>, fillcolor="#e6843e"] ;
-5 -> 6 ;
-7 [label=<Bene_Account &le; 0.0<br/>entropy = 0.653<br/>samples = 13420<br/>value = [11164, 2256]<br/>class = Legit>, fillcolor="#ea9a61"] ;
-5 -> 7 ;
-8 [label=<Sender_Cat_CLIENT &le; 0.009<br/>entropy = 0.632<br/>samples = 12485<br/>value = [10499, 1986]<br/>class = Legit>, fillcolor="#ea995e"] ;
-7 -> 8 ;
-9 [label=<entropy = 0.597<br/>samples = 10147<br/>value = [8678, 1469]<br/>class = Legit>, fillcolor="#e9965b"] ;
-8 -> 9 ;
-10 [label=<entropy = 0.762<br/>samples = 2338<br/>value = [1821, 517]<br/>class = Legit>, fillcolor="#eca571"] ;
-8 -> 10 ;
-11 [label=<Bene_Account &le; 0.021<br/>entropy = 0.867<br/>samples = 935<br/>value = [665, 270]<br/>class = Legit>, fillcolor="#f0b489"] ;
-7 -> 11 ;
-12 [label=<entropy = 0.0<br/>samples = 151<br/>value = [0, 151]<br/>class = Fraud>, fillcolor="#399de5"] ;
-11 -> 12 ;
-13 [label=<Bene_Cat_CLIENT &le; 0.389<br/>entropy = 0.614<br/>samples = 784<br/>value = [665, 119]<br/>class = Legit>, fillcolor="#ea985c"] ;
-11 -> 13 ;
-14 [label=<entropy = 0.442<br/>samples = 731<br/>value = [664, 67]<br/>class = Legit>, fillcolor="#e88e4d"] ;
-13 -> 14 ;
-15 [label=<entropy = 0.135<br/>samples = 53<br/>value = [1, 52]<br/>class = Fraud>, fillcolor="#3d9fe6"] ;
-13 -> 15 ;
-16 [label=<entropy = 0.358<br/>samples = 6084<br/>value = [5671, 413]<br/>class = Legit>, fillcolor="#e78a47"] ;
-4 -> 16 ;
-17 [label=<Bene_Country &le; 0.012<br/>entropy = 0.899<br/>samples = 7799<br/>value = [5338, 2461]<br/>class = Legit>, fillcolor="#f1bb94"] ;
-3 -> 17 ;
-18 [label=<entropy = 0.191<br/>samples = 749<br/>value = [727, 22]<br/>class = Legit>, fillcolor="#e6853f"] ;
-17 -> 18 ;
-19 [label=<Transaction_Cat_QUICK-PAYMENT &le; 0.993<br/>entropy = 0.93<br/>samples = 7050<br/>value = [4611, 2439]<br/>class = Legit>, fillcolor="#f3c4a2"] ;
-17 -> 19 ;
-20 [label=<entropy = 0.0<br/>samples = 161<br/>value = [0, 161]<br/>class = Fraud>, fillcolor="#399de5"] ;
-19 -> 20 ;
-21 [label=<Bene_Account &le; 0.0<br/>entropy = 0.916<br/>samples = 6889<br/>value = [4611, 2278]<br/>class = Legit>, fillcolor="#f2bf9b"] ;
-19 -> 21 ;
-22 [label=<Bene_Cat_CLIENT &le; 0.009<br/>entropy = 0.89<br/>samples = 6507<br/>value = [4509, 1998]<br/>class = Legit>, fillcolor="#f1b991"] ;
-21 -> 22 ;
-23 [label=<Sender_Cat_CLIENT &le; 0.085<br/>entropy = 0.794<br/>samples = 3318<br/>value = [2523, 795]<br/>class = Legit>, fillcolor="#eda977"] ;
-22 -> 23 ;
-24 [label=<entropy = 0.466<br/>samples = 1484<br/>value = [1337, 147]<br/>class = Legit>, fillcolor="#e88f4f"] ;
-23 -> 24 ;
-25 [label=<entropy = 0.937<br/>samples = 1834<br/>value = [1186, 648]<br/>class = Legit>, fillcolor="#f3c6a5"] ;
-23 -> 25 ;
-26 [label=<Bene_Cat_CLIENT &le; 0.978<br/>entropy = 0.956<br/>samples = 3189<br/>value = [1986, 1203]<br/>class = Legit>, fillcolor="#f5cdb1"] ;
-22 -> 26 ;
-27 [label=<entropy = 0.0<br/>samples = 26<br/>value = [0, 26]<br/>class = Fraud>, fillcolor="#399de5"] ;
-26 -> 27 ;
-28 [label=<entropy = 0.952<br/>samples = 3163<br/>value = [1986, 1177]<br/>class = Legit>, fillcolor="#f4ccae"] ;
-26 -> 28 ;
-29 [label=<Bene_Cat_CLIENT &le; 0.159<br/>entropy = 0.837<br/>samples = 382<br/>value = [102, 280]<br/>class = Fraud>, fillcolor="#81c1ee"] ;
-21 -> 29 ;
-30 [label=<Bene_Account &le; 0.021<br/>entropy = 0.963<br/>samples = 163<br/>value = [100, 63]<br/>class = Legit>, fillcolor="#f5d0b6"] ;
-29 -> 30 ;
-31 [label=<entropy = 0.0<br/>samples = 53<br/>value = [0, 53]<br/>class = Fraud>, fillcolor="#399de5"] ;
-30 -> 31 ;
-32 [label=<entropy = 0.439<br/>samples = 110<br/>value = [100, 10]<br/>class = Legit>, fillcolor="#e88e4d"] ;
-30 -> 32 ;
-33 [label=<entropy = 0.075<br/>samples = 219<br/>value = [2, 217]<br/>class = Fraud>, fillcolor="#3b9ee5"] ;
-29 -> 33 ;
-34 [label=<Bene_Cat_CLIENT &le; 0.998<br/>entropy = 0.96<br/>samples = 2526<br/>value = [967, 1559]<br/>class = Fraud>, fillcolor="#b4daf5"] ;
-2 -> 34 ;
-35 [label=<Bene_Account &le; 0.042<br/>entropy = 0.849<br/>samples = 1535<br/>value = [423, 1112]<br/>class = Fraud>, fillcolor="#84c2ef"] ;
-34 -> 35 ;
-36 [label=<entropy = 0.399<br/>samples = 177<br/>value = [14, 163]<br/>class = Fraud>, fillcolor="#4aa5e7"] ;
-35 -> 36 ;
-37 [label=<entropy = 0.883<br/>samples = 1358<br/>value = [409, 949]<br/>class = Fraud>, fillcolor="#8ec7f0"] ;
-35 -> 37 ;
-38 [label=<Bene_Account &le; 0.049<br/>entropy = 0.993<br/>samples = 991<br/>value = [544, 447]<br/>class = Legit>, fillcolor="#fae9dc"] ;
-34 -> 38 ;
-39 [label=<entropy = 0.914<br/>samples = 240<br/>value = [79, 161]<br/>class = Fraud>, fillcolor="#9acdf2"] ;
-38 -> 39 ;
-40 [label=<entropy = 0.959<br/>samples = 751<br/>value = [465, 286]<br/>class = Legit>, fillcolor="#f5ceb3"] ;
-38 -> 40 ;
-41 [label=<entropy = 0.0<br/>samples = 7759<br/>value = [7759, 0]<br/>class = Legit>, fillcolor="#e58139"] ;
-1 -> 41 ;
-42 [label=<Transaction_Cat_PAYMENT &le; 0.5<br/>entropy = 0.912<br/>samples = 72870<br/>value = [23819, 49051]<br/>class = Fraud>, fillcolor="#99cdf2"] ;
-0 -> 42 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-43 [label=<Bene_Account &le; 0.0<br/>entropy = 0.869<br/>samples = 69107<br/>value = [20056, 49051]<br/>class = Fraud>, fillcolor="#8ac5f0"] ;
-42 -> 43 ;
-44 [label=<Sender_Country &le; 0.017<br/>entropy = 1.0<br/>samples = 23194<br/>value = [11542, 11652]<br/>class = Fraud>, fillcolor="#fdfeff"] ;
-43 -> 44 ;
-45 [label=<Transaction_Cat_CASH-CHECK &le; 0.5<br/>entropy = 0.722<br/>samples = 8706<br/>value = [6966, 1740]<br/>class = Legit>, fillcolor="#eba06a"] ;
-44 -> 45 ;
-46 [label=<Sender_Country &le; 0.017<br/>entropy = 0.808<br/>samples = 7011<br/>value = [5271, 1740]<br/>class = Legit>, fillcolor="#eeab7a"] ;
-45 -> 46 ;
-47 [label=<Sender_Account &le; 0.021<br/>entropy = 0.983<br/>samples = 449<br/>value = [190, 259]<br/>class = Fraud>, fillcolor="#cae5f8"] ;
-46 -> 47 ;
-48 [label=<entropy = 0.0<br/>samples = 62<br/>value = [0, 62]<br/>class = Fraud>, fillcolor="#399de5"] ;
-47 -> 48 ;
-49 [label=<Sender_Account &le; 0.021<br/>entropy = 1.0<br/>samples = 387<br/>value = [190, 197]<br/>class = Fraud>, fillcolor="#f8fcfe"] ;
-47 -> 49 ;
-50 [label=<entropy = 0.728<br/>samples = 128<br/>value = [102, 26]<br/>class = Legit>, fillcolor="#eca16b"] ;
-49 -> 50 ;
-51 [label=<entropy = 0.925<br/>samples = 259<br/>value = [88, 171]<br/>class = Fraud>, fillcolor="#9fcff2"] ;
-49 -> 51 ;
-52 [label=<entropy = 0.77<br/>samples = 6562<br/>value = [5081, 1481]<br/>class = Legit>, fillcolor="#eda673"] ;
-46 -> 52 ;
-53 [label=<entropy = 0.0<br/>samples = 1695<br/>value = [1695, 0]<br/>class = Legit>, fillcolor="#e58139"] ;
-45 -> 53 ;
-54 [label=<Sender_Account &le; 0.015<br/>entropy = 0.9<br/>samples = 14488<br/>value = [4576, 9912]<br/>class = Fraud>, fillcolor="#94caf1"] ;
-44 -> 54 ;
-55 [label=<entropy = 0.015<br/>samples = 748<br/>value = [1, 747]<br/>class = Fraud>, fillcolor="#399de5"] ;
-54 -> 55 ;
-56 [label=<Sender_Account &le; 0.029<br/>entropy = 0.918<br/>samples = 13740<br/>value = [4575, 9165]<br/>class = Fraud>, fillcolor="#9ccef2"] ;
-54 -> 56 ;
-57 [label=<Bene_Country &le; 0.012<br/>entropy = 1.0<br/>samples = 4151<br/>value = [2087, 2064]<br/>class = Legit>, fillcolor="#fffefd"] ;
-56 -> 57 ;
-58 [label=<entropy = 0.713<br/>samples = 184<br/>value = [148, 36]<br/>class = Legit>, fillcolor="#eba069"] ;
-57 -> 58 ;
-59 [label=<Bene_Cat_CLIENT &le; 0.003<br/>entropy = 1.0<br/>samples = 3967<br/>value = [1939, 2028]<br/>class = Fraud>, fillcolor="#f6fbfe"] ;
-57 -> 59 ;
-60 [label=<Sender_Account &le; 0.021<br/>entropy = 0.997<br/>samples = 2864<br/>value = [1518, 1346]<br/>class = Legit>, fillcolor="#fcf1e9"] ;
-59 -> 60 ;
-61 [label=<Sender_Account &le; 0.021<br/>entropy = 0.971<br/>samples = 1661<br/>value = [997, 664]<br/>class = Legit>, fillcolor="#f6d5bd"] ;
-60 -> 61 ;
-62 [label=<Sender_Country &le; 0.021<br/>entropy = 0.973<br/>samples = 566<br/>value = [228, 338]<br/>class = Fraud>, fillcolor="#bfdff7"] ;
-61 -> 62 ;
-63 [label=<entropy = 0.99<br/>samples = 511<br/>value = [226, 285]<br/>class = Fraud>, fillcolor="#d6ebfa"] ;
-62 -> 63 ;
-64 [label=<entropy = 0.225<br/>samples = 55<br/>value = [2, 53]<br/>class = Fraud>, fillcolor="#40a1e6"] ;
-62 -> 64 ;
-65 [label=<entropy = 0.878<br/>samples = 1095<br/>value = [769, 326]<br/>class = Legit>, fillcolor="#f0b68d"] ;
-61 -> 65 ;
-66 [label=<Sender_Cat_CLIENT &le; 0.021<br/>entropy = 0.987<br/>samples = 1203<br/>value = [521, 682]<br/>class = Fraud>, fillcolor="#d0e8f9"] ;
-60 -> 66 ;
-67 [label=<entropy = 0.992<br/>samples = 1163<br/>value = [521, 642]<br/>class = Fraud>, fillcolor="#daedfa"] ;
-66 -> 67 ;
-68 [label=<entropy = 0.0<br/>samples = 40<br/>value = [0, 40]<br/>class = Fraud>, fillcolor="#399de5"] ;
-66 -> 68 ;
-69 [label=<Bene_Cat_CLIENT &le; 0.992<br/>entropy = 0.959<br/>samples = 1103<br/>value = [421, 682]<br/>class = Fraud>, fillcolor="#b3d9f5"] ;
-59 -> 69 ;
-70 [label=<entropy = 0.0<br/>samples = 60<br/>value = [0, 60]<br/>class = Fraud>, fillcolor="#399de5"] ;
-69 -> 70 ;
-71 [label=<Transaction_Cat_QUICK-PAYMENT &le; 0.037<br/>entropy = 0.973<br/>samples = 1043<br/>value = [421, 622]<br/>class = Fraud>, fillcolor="#bfdff7"] ;
-69 -> 71 ;
-72 [label=<entropy = 0.999<br/>samples = 479<br/>value = [246, 233]<br/>class = Legit>, fillcolor="#fef8f5"] ;
-71 -> 72 ;
-73 [label=<entropy = 0.894<br/>samples = 564<br/>value = [175, 389]<br/>class = Fraud>, fillcolor="#92c9f1"] ;
-71 -> 73 ;
-74 [label=<Bene_Country &le; 0.011<br/>entropy = 0.826<br/>samples = 9589<br/>value = [2488, 7101]<br/>class = Fraud>, fillcolor="#7ebfee"] ;
-56 -> 74 ;
-75 [label=<entropy = 1.0<br/>samples = 327<br/>value = [161, 166]<br/>class = Fraud>, fillcolor="#f9fcfe"] ;
-74 -> 75 ;
-76 [label=<Bene_Country &le; 0.022<br/>entropy = 0.813<br/>samples = 9262<br/>value = [2327, 6935]<br/>class = Fraud>, fillcolor="#7bbeee"] ;
-74 -> 76 ;
-77 [label=<entropy = 0.694<br/>samples = 3037<br/>value = [566, 2471]<br/>class = Fraud>, fillcolor="#66b3eb"] ;
-76 -> 77 ;
-78 [label=<Bene_Country &le; 0.022<br/>entropy = 0.859<br/>samples = 6225<br/>value = [1761, 4464]<br/>class = Fraud>, fillcolor="#87c4ef"] ;
-76 -> 78 ;
-79 [label=<entropy = 0.903<br/>samples = 4084<br/>value = [1300, 2784]<br/>class = Fraud>, fillcolor="#95cbf1"] ;
-78 -> 79 ;
-80 [label=<entropy = 0.752<br/>samples = 2141<br/>value = [461, 1680]<br/>class = Fraud>, fillcolor="#6fb8ec"] ;
-78 -> 80 ;
-81 [label=<Bene_Account &le; 0.021<br/>entropy = 0.692<br/>samples = 45913<br/>value = [8514, 37399]<br/>class = Fraud>, fillcolor="#66b3eb"] ;
-43 -> 81 ;
-82 [label=<entropy = 0.0<br/>samples = 4300<br/>value = [0, 4300]<br/>class = Fraud>, fillcolor="#399de5"] ;
-81 -> 82 ;
-83 [label=<Transaction_Cat_CASH-CHECK &le; 1.0<br/>entropy = 0.731<br/>samples = 41613<br/>value = [8514, 33099]<br/>class = Fraud>, fillcolor="#6cb6ec"] ;
-81 -> 83 ;
-84 [label=<Sender_Account &le; 0.014<br/>entropy = 0.7<br/>samples = 38840<br/>value = [7345, 31495]<br/>class = Fraud>, fillcolor="#67b4eb"] ;
-83 -> 84 ;
-85 [label=<entropy = 0.0<br/>samples = 898<br/>value = [0, 898]<br/>class = Fraud>, fillcolor="#399de5"] ;
-84 -> 85 ;
-86 [label=<Sender_Account &le; 0.032<br/>entropy = 0.709<br/>samples = 37942<br/>value = [7345, 30597]<br/>class = Fraud>, fillcolor="#69b5eb"] ;
-84 -> 86 ;
-87 [label=<Bene_Account &le; 0.023<br/>entropy = 0.819<br/>samples = 11919<br/>value = [3039, 8880]<br/>class = Fraud>, fillcolor="#7dbfee"] ;
-86 -> 87 ;
-88 [label=<Bene_Cat_CLIENT &le; 0.064<br/>entropy = 0.997<br/>samples = 2044<br/>value = [955, 1089]<br/>class = Fraud>, fillcolor="#e7f3fc"] ;
-87 -> 88 ;
-89 [label=<Bene_Account &le; 0.021<br/>entropy = 0.999<br/>samples = 1975<br/>value = [953, 1022]<br/>class = Fraud>, fillcolor="#f2f8fd"] ;
-88 -> 89 ;
-90 [label=<Sender_Account &le; 0.021<br/>entropy = 0.817<br/>samples = 272<br/>value = [203, 69]<br/>class = Legit>, fillcolor="#eeac7c"] ;
-89 -> 90 ;
-91 [label=<entropy = 0.335<br/>samples = 129<br/>value = [121, 8]<br/>class = Legit>, fillcolor="#e78946"] ;
-90 -> 91 ;
-92 [label=<entropy = 0.984<br/>samples = 143<br/>value = [82, 61]<br/>class = Legit>, fillcolor="#f8dfcc"] ;
-90 -> 92 ;
-93 [label=<Bene_Account &le; 0.023<br/>entropy = 0.99<br/>samples = 1703<br/>value = [750, 953]<br/>class = Fraud>, fillcolor="#d5eaf9"] ;
-89 -> 93 ;
-94 [label=<entropy = 0.0<br/>samples = 91<br/>value = [0, 91]<br/>class = Fraud>, fillcolor="#399de5"] ;
-93 -> 94 ;
-95 [label=<Transaction_Cat_CASH-CHECK &le; 0.027<br/>entropy = 0.997<br/>samples = 1612<br/>value = [750, 862]<br/>class = Fraud>, fillcolor="#e5f2fc"] ;
-93 -> 95 ;
-96 [label=<entropy = 0.999<br/>samples = 1570<br/>value = [750, 820]<br/>class = Fraud>, fillcolor="#eef7fd"] ;
-95 -> 96 ;
-97 [label=<entropy = 0.0<br/>samples = 42<br/>value = [0, 42]<br/>class = Fraud>, fillcolor="#399de5"] ;
-95 -> 97 ;
-98 [label=<entropy = 0.189<br/>samples = 69<br/>value = [2, 67]<br/>class = Fraud>, fillcolor="#3fa0e6"] ;
-88 -> 98 ;
-99 [label=<Bene_Account &le; 0.043<br/>entropy = 0.743<br/>samples = 9875<br/>value = [2084, 7791]<br/>class = Fraud>, fillcolor="#6eb7ec"] ;
-87 -> 99 ;
-100 [label=<entropy = 0.407<br/>samples = 1415<br/>value = [115, 1300]<br/>class = Fraud>, fillcolor="#4ba6e7"] ;
-99 -> 100 ;
-101 [label=<Bene_Cat_CLIENT &le; 0.988<br/>entropy = 0.783<br/>samples = 8460<br/>value = [1969, 6491]<br/>class = Fraud>, fillcolor="#75bbed"] ;
-99 -> 101 ;
-102 [label=<Bene_Cat_CLIENT &le; 0.0<br/>entropy = 0.742<br/>samples = 7163<br/>value = [1505, 5658]<br/>class = Fraud>, fillcolor="#6eb7ec"] ;
-101 -> 102 ;
-103 [label=<Sender_Cat_CLIENT &le; 0.001<br/>entropy = 0.748<br/>samples = 7052<br/>value = [1505, 5547]<br/>class = Fraud>, fillcolor="#6fb8ec"] ;
-102 -> 103 ;
-104 [label=<Sender_Account &le; 0.017<br/>entropy = 0.757<br/>samples = 6855<br/>value = [1497, 5358]<br/>class = Fraud>, fillcolor="#70b8ec"] ;
-103 -> 104 ;
-105 [label=<Sender_Account &le; 0.017<br/>entropy = 0.696<br/>samples = 3898<br/>value = [730, 3168]<br/>class = Fraud>, fillcolor="#67b4eb"] ;
-104 -> 105 ;
-106 [label=<entropy = 0.775<br/>samples = 3194<br/>value = [730, 2464]<br/>class = Fraud>, fillcolor="#74baed"] ;
-105 -> 106 ;
-107 [label=<entropy = 0.0<br/>samples = 704<br/>value = [0, 704]<br/>class = Fraud>, fillcolor="#399de5"] ;
-105 -> 107 ;
-108 [label=<entropy = 0.826<br/>samples = 2957<br/>value = [767, 2190]<br/>class = Fraud>, fillcolor="#7ebfee"] ;
-104 -> 108 ;
-109 [label=<entropy = 0.245<br/>samples = 197<br/>value = [8, 189]<br/>class = Fraud>, fillcolor="#41a1e6"] ;
-103 -> 109 ;
-110 [label=<entropy = 0.0<br/>samples = 111<br/>value = [0, 111]<br/>class = Fraud>, fillcolor="#399de5"] ;
-102 -> 110 ;
-111 [label=<entropy = 0.941<br/>samples = 1297<br/>value = [464, 833]<br/>class = Fraud>, fillcolor="#a7d4f3"] ;
-101 -> 111 ;
-112 [label=<Sender_Country &le; 0.021<br/>entropy = 0.647<br/>samples = 26023<br/>value = [4306, 21717]<br/>class = Fraud>, fillcolor="#60b0ea"] ;
-86 -> 112 ;
-113 [label=<Sender_Country &le; 0.021<br/>entropy = 0.773<br/>samples = 7170<br/>value = [1628, 5542]<br/>class = Fraud>, fillcolor="#73baed"] ;
-112 -> 113 ;
-114 [label=<Sender_Country &le; 0.017<br/>entropy = 0.477<br/>samples = 1367<br/>value = [140, 1227]<br/>class = Fraud>, fillcolor="#50a8e8"] ;
-113 -> 114 ;
-115 [label=<entropy = 0.713<br/>samples = 373<br/>value = [73, 300]<br/>class = Fraud>, fillcolor="#69b5eb"] ;
-114 -> 115 ;
-116 [label=<entropy = 0.356<br/>samples = 994<br/>value = [67, 927]<br/>class = Fraud>, fillcolor="#47a4e7"] ;
-114 -> 116 ;
-117 [label=<entropy = 0.821<br/>samples = 5803<br/>value = [1488, 4315]<br/>class = Fraud>, fillcolor="#7dbfee"] ;
-113 -> 117 ;
-118 [label=<Sender_Country &le; 0.021<br/>entropy = 0.59<br/>samples = 18853<br/>value = [2678, 16175]<br/>class = Fraud>, fillcolor="#5aade9"] ;
-112 -> 118 ;
-119 [label=<entropy = 0.006<br/>samples = 2262<br/>value = [1, 2261]<br/>class = Fraud>, fillcolor="#399de5"] ;
-118 -> 119 ;
-120 [label=<Sender_Country &le; 0.021<br/>entropy = 0.638<br/>samples = 16591<br/>value = [2677, 13914]<br/>class = Fraud>, fillcolor="#5fb0ea"] ;
-118 -> 120 ;
-121 [label=<Sender_Country &le; 0.021<br/>entropy = 0.687<br/>samples = 11344<br/>value = [2078, 9266]<br/>class = Fraud>, fillcolor="#65b3eb"] ;
-120 -> 121 ;
-122 [label=<Sender_Country &le; 0.021<br/>entropy = 0.644<br/>samples = 8566<br/>value = [1405, 7161]<br/>class = Fraud>, fillcolor="#60b0ea"] ;
-121 -> 122 ;
-123 [label=<Transaction_Cat_CASH-CHECK &le; 0.0<br/>entropy = 0.704<br/>samples = 7348<br/>value = [1405, 5943]<br/>class = Fraud>, fillcolor="#68b4eb"] ;
-122 -> 123 ;
-124 [label=<Sender_Country &le; 0.021<br/>entropy = 0.711<br/>samples = 7227<br/>value = [1405, 5822]<br/>class = Fraud>, fillcolor="#69b5eb"] ;
-123 -> 124 ;
-125 [label=<entropy = 0.0<br/>samples = 758<br/>value = [0, 758]<br/>class = Fraud>, fillcolor="#399de5"] ;
-124 -> 125 ;
-126 [label=<entropy = 0.755<br/>samples = 6469<br/>value = [1405, 5064]<br/>class = Fraud>, fillcolor="#70b8ec"] ;
-124 -> 126 ;
-127 [label=<entropy = 0.0<br/>samples = 121<br/>value = [0, 121]<br/>class = Fraud>, fillcolor="#399de5"] ;
-123 -> 127 ;
-128 [label=<entropy = 0.0<br/>samples = 1218<br/>value = [0, 1218]<br/>class = Fraud>, fillcolor="#399de5"] ;
-122 -> 128 ;
-129 [label=<entropy = 0.799<br/>samples = 2778<br/>value = [673, 2105]<br/>class = Fraud>, fillcolor="#78bced"] ;
-121 -> 129 ;
-130 [label=<Sender_Country &le; 0.031<br/>entropy = 0.512<br/>samples = 5247<br/>value = [599, 4648]<br/>class = Fraud>, fillcolor="#53aae8"] ;
-120 -> 130 ;
-131 [label=<entropy = 0.395<br/>samples = 3625<br/>value = [283, 3342]<br/>class = Fraud>, fillcolor="#4aa5e7"] ;
-130 -> 131 ;
-132 [label=<entropy = 0.711<br/>samples = 1622<br/>value = [316, 1306]<br/>class = Fraud>, fillcolor="#69b5eb"] ;
-130 -> 132 ;
-133 [label=<Bene_Account &le; 0.027<br/>entropy = 0.982<br/>samples = 2773<br/>value = [1169, 1604]<br/>class = Fraud>, fillcolor="#c9e4f8"] ;
-83 -> 133 ;
-134 [label=<Sender_Account &le; 0.031<br/>entropy = 0.877<br/>samples = 2281<br/>value = [677, 1604]<br/>class = Fraud>, fillcolor="#8dc6f0"] ;
-133 -> 134 ;
-135 [label=<Sender_Account &le; 0.015<br/>entropy = 0.996<br/>samples = 487<br/>value = [226, 261]<br/>class = Fraud>, fillcolor="#e4f2fc"] ;
-134 -> 135 ;
-136 [label=<entropy = 0.0<br/>samples = 37<br/>value = [0, 37]<br/>class = Fraud>, fillcolor="#399de5"] ;
-135 -> 136 ;
-137 [label=<entropy = 1.0<br/>samples = 450<br/>value = [226, 224]<br/>class = Legit>, fillcolor="#fffefd"] ;
-135 -> 137 ;
-138 [label=<entropy = 0.813<br/>samples = 1794<br/>value = [451, 1343]<br/>class = Fraud>, fillcolor="#7bbeee"] ;
-134 -> 138 ;
-139 [label=<entropy = 0.0<br/>samples = 492<br/>value = [492, 0]<br/>class = Legit>, fillcolor="#e58139"] ;
-133 -> 139 ;
-140 [label=<entropy = 0.0<br/>samples = 3763<br/>value = [3763, 0]<br/>class = Legit>, fillcolor="#e58139"] ;
-42 -> 140 ;
+digraph {
+    graph [ rankdir=TB ]
+    graph [ rankdir="LR" ]
+
+    0 [ label="Sender_Account<0.00104235962" ]
+    0 -> 1 [label="yes" color="#FF0000"]
+    0 -> 2 [label="no, missing" color="#0000FF"]
+
+    1 [ label="Transaction_Cat_PAYMENT<1" ]
+    1 -> 3 [label="yes" color="#FF0000"]
+    1 -> 4 [label="no, missing" color="#0000FF"]
+
+    3 [ label="leaf=-1.50844717" ]
+
+    4 [ label="leaf=-2.19599152" ]
+
+    2 [ label="Transaction_Cat_PAYMENT<1" ]
+    2 -> 5 [label="yes" color="#FF0000"]
+    2 -> 6 [label="no, missing" color="#0000FF"]
+
+    5 [ label="Sender_Account<0.0299771074" ]
+    5 -> 7 [label="yes" color="#FF0000"]
+    5 -> 8 [label="no, missing" color="#0000FF"]
+
+    7 [ label="Sender_Account<0.0171914045" ]
+    7 -> 9 [label="yes" color="#FF0000"]
+    7 -> 10 [label="no, missing" color="#0000FF"]
+
+    9 [ label="leaf=2.07075691" ]
+
+    10 [ label="leaf=0.0162737723" ]
+
+    8 [ label="Sender_Account<0.030730905" ]
+    8 -> 11 [label="yes" color="#FF0000"]
+    8 -> 12 [label="no, missing" color="#0000FF"]
+
+    11 [ label="leaf=2.12254" ]
+
+    12 [ label="leaf=1.40676689" ]
+
+    6 [ label="leaf=-2.19571686" ]
 }
