@@ -246,7 +246,7 @@ Model algorithm and selection criteria are summarized in the table below:
 
 - **Baseline - Train:** Before the models were trained and hyper-parameter tuned on the Low Amount train set, a no-skill model was built to obtain a baseline. Our goal is to have the model which has the accuracy score greater 50% and the F1 score greater than 27%.
 
-- **Default models - Train:** The below models were built with default options and the results are depicted in the table below. AB provides the lowest score and is the slowest model in terms of training time. It was eliminated. DT has a very decent score but it is slower than XGB and HGBT because it built a very deep tree - more than 60 in depth.
+- **Default models - Train:** The below models were built with default options and the results are depicted in the table below. AB provides the lowest score and is the slowest model in terms of training time. It was eliminated. DT has a very decent score but it is slower than XGB because it built a very deep tree - more than 60 in depth.
 
 ![scores1](images/scores_default.png)
 
@@ -266,11 +266,11 @@ Model algorithm and selection criteria are summarized in the table below:
 
 ![scores3](images/scores_full_test.png)
 
-- **Confusion Matrix:** DT has the highest number of false positives (FP) and the lowest number of false negatives (FN). The confusion matrices of the XGB and HBGT models are alike. However, they present the trade-off between Precision and Recall. While HGBT has the lower number of FN, its FP is higher than that of XGB and higher FP impacts user experience. In other words, HGBT correctly classified more "Fraud" cases, it also incorrectly classified more legitimate transactions as "Fraud".
+- **Confusion Matrix:** DT has the highest number of false positives (FP) and the lowest number of false negatives (FN). The confusion matrices of the XGB and HBGT models are alike. However, they present the trade-off between Precision and Recall. While HGBT has the lower number of FN, its FP is higher than that of XGB. The higher FP impacts user experience. In other words, HGBT correctly classified more "Fraud" cases, it also incorrectly classified more legitimate transactions as "Fraud".
 
 ![fig12](images/confusionmatrix25.png)
 
-- **Precision-Recall and ROC-AUC curves:** The Precision-Recall curves and ROC-AUC curves show that DT is trailing behind.  XGB and HGBT are very similar.
+- **Precision-Recall and ROC-AUC curves:** The Precision-Recall curves and ROC-AUC curves show that DT is lightly trailing behind.  XGB and HGBT are very similar.
 
 ![fig13](images/compare25.png)
 
@@ -306,7 +306,7 @@ Decision Trees model allows us to visualize the decision tree to know exactly wh
 
 ![fig18](images/tree_high_amount.png)
 
-The tree shows at each step or each node which question was asked, or which rule was used and how the answer would lead to the next step or node. The color of the boxes presents the class purity at the node: blue stands for ‘Fraud’ and orange represents ‘Legit’. The darker the color, the purer the class is at that node. In the tree of the model trained on the High Amount dataset below, the root node is white because it is a tie node - the number of "Legit" samples and "Fraud" samples are the same.
+The tree shows at each step or each node which question was asked, or which rule was used and how the answer would lead to the next step or node. The color of the boxes presents the class purity at the node: blue stands for ‘Fraud’ and orange represents ‘Legit’. The darker the color, the purer the class is at that node. In the tree of the model trained on the High Amount dataset above, the root node is white because it is a tie node - the number of "Legit" samples and "Fraud" samples are the same.
 
 Each box or node provides useful information. For example, at the root node or the top box of tree trained on the High Amount dataset, the algorithm tried all the possibilities to split and determined that the split with "USD_amount \<=5,500.495" is an optimum split which gives the highest information gain or the lowest uncertainty measured by Entropy. The highest Entropy value is 1 and the lowest value is 0. The tree starts at the root node with Entropy = 1 as there is lots of uncertainty at this beginning point. As we travel down the tree, the Entropy reduces in values as more information gain and less uncertainty. Our goal is to reach 0 Entropy which means the node is pure. In addition,
 
@@ -320,23 +320,23 @@ The split is also illustrated in the decision boundary below:
 
 **Decision Trees of the XGB model trained on the Low Amount dataset**
 
-XGB is a tree-based ensemble which is a technique leveraging the "The Wisdom of the Crowd" combining multiple decision trees, which is like the above tree, to produce an optimal outcome. In our case, the XGB model built 100 decision trees, which are called weak-base-learners, with the tree depth limited to 7. The model built each tree sequentially. Each tree was added one at a time to the ensemble and the objective is to correct the predictive errors made by prior trees. Below is the visualization of the last and first decision trees in the ensemble:
+XGB is a tree-based ensemble which is a technique leveraging the "The Wisdom of the Crowd" combining multiple decision trees (each tree is like the above tree) to produce an optimal outcome. In our case, the XGB model built 100 decision trees, which are called weak-base-learners, with the tree depth limited to below 7. The model built each tree sequentially. Each tree was added one at a time to the ensemble and the objective is to correct the predictive errors made by prior trees. Below is the visualization of the last and first decision trees in the ensemble:
 
-**Decision Tree - member #99  or the last tree in the ensemble**
+**Decision Tree - member #99 in the ensemble**
 
 ![tree99](images/tree99.png)
 
-**Decision Tree - member #0 or the first tree in the ensemble**
+**Decision Tree - member #0 in the ensemble**
 
 ![tree0](images/tree0.png)
 
 ## 
 
-The key difference between the tree in the XGB ensemble of the Low Amount dataset and the single tree of the High Amount dataset is that the leaf of the XGB tree only contains decision values. These values represent the conditional probabilities of the data belonging to the positive class ("Fraud") and can be negative (0 means 50% chance). The leaf values in each tree of the ensemble will then be aggregated (and transformed) by the model for the final prediction.
+The key difference between the tree in the XGB ensemble of the Low Amount dataset and the single tree of the High Amount dataset is that the leaf of the XGB tree only contains decision values. These values represent the conditional probabilities of the data at the leaf belonging to the positive class ("Fraud") and can be negative (0 means 50% chance). The leaf values in each tree of the ensemble will then be aggregated (and transformed) by the model for the final prediction.
 
 ## 7.2 Confusion Matrix
 
-**Confusion Matrix - Low Amount dataset**
+**XGB Confusion Matrix - Low Amount dataset**
 
 ![fig16](images/confusionmatrix_dt.png)
 
@@ -347,7 +347,7 @@ The above confusion matrix can be interpreted as follows:
 - The Precision, Recall, F1 scores are summarized below 
   ![fig16](images/classification_report.png)
 
-**Confusion Matrix - High Amount dataset**
+**DT Confusion Matrix - High Amount dataset**
 ![fig16](images/confusionmatrix_dt_high_amount.png)
 The above confusion matrix shows that the model correctly classified all instances in the test set. The scores are summarized in the classification report below:
 
