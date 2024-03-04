@@ -404,4 +404,7 @@ The project can be continued by implementing the last step of CRISP-DM which is 
 
 ## 8. Jupyter Notebook
 
-Please refer to the [Payment Fraud Detection Jupiter Notebook](https://github.com/TLe2023/DirectMarketing/blob/main/Bank_Direct_Marketing_7_features_Final.ipynb) for more information.
+- [Fraud Payment Detection - Readme](README.md)
+- [Fraud Payment Detection - EDA](Fraud_Detection_EDA_Final.ipynb)
+- [Fraud Payment Detection - Low Amount](Fraud_Detection_Low_Amount_Final.ipynb)
+- [Fraud Payment Detection - High Amount](Fraud_Detection_High_Amount_Final.ipynb)
