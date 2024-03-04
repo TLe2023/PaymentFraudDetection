@@ -28,7 +28,7 @@ The synthetic payment dataset was provided by an international financial institu
 
 The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modelling, evaluation, and deployment.
 
-![fig1](file://C:\Users\ezmur\OneDrive\Documents\My codes\Capstone\images\process.png?msec=1709443500479)
+![fig1](images/process.png)
 
 **Phases of the CRISP-DM Process Model for Data Mining**
 
