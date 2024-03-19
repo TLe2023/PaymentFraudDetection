@@ -354,8 +354,11 @@ The key difference between the tree in the XGB ensemble of the Low Amount datase
 The above confusion matrix can be summarized as follows:
 
 - In the test set, there are 83,651positive or "Fraud” observations and the model correctly predicted 75,515 instances but missed 8,136 positive instances.
+
 - Of 83,651 negative or "Legit" instances, it correctly classified 81,818 observations and incorrectly classified 1,833 observations.
+
 - The Precision, Recall, F1 scores are summarized below 
+  
   ![fig16](images/classification_report.png)
 
 **DT Confusion Matrix - High Amount dataset**
