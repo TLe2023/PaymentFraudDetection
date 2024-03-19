@@ -234,7 +234,7 @@ Model algorithm and selection criteria are summarized in the table below:
 
 - **Hyper-parameter tuning:** Instead of using the exhaustive and computationally expensive grid searching with GridSearchCV, randomized parameter optimization was used to tweak model performance for optimal results due to its fast speed.
 
-- **Cross-validation and calibration:** The dataset was split into trained set, calibration set, and test set. When splitting the dataset, the class proportion was preserved with the “stratify” option. The test set was held out for final evaluation. Models were calibrated on the calibration set so that probabilistic prediction could be interpreted as a confidence level. The Train dataset was then split into smaller sets to train, tune hyper-parameters, and validate the models as part of the stratified k-fold cross-validation method. 
+- **Cross-validation and calibration:** The dataset was split into train set, calibration set, and test set. When splitting the dataset, the class proportion was preserved with the “stratify” option. The test set was held out for final evaluation. Models were calibrated on the calibration set so that probabilistic prediction could be interpreted as a confidence level. The Train dataset was then split into smaller sets to train, tune hyper-parameters, and validate the models as part of the stratified k-fold cross-validation method. 
 
 ### 6.2 Train and Select Models on the Low Amount dataset
 
@@ -258,7 +258,7 @@ Model algorithm and selection criteria are summarized in the table below:
   
   #### 6.2.2 Calibrate models on the Low Amount Calibration Set
   
-  Model calibration was performed on the Calibration set so that predicted probabilites could be used as a confidence level to support decision making. One usage could be to develop a fraudulent review process with three sub-processes or procedures based on Low, Medium and High probability groups. Below are the reliability diagrams which are plotted with three bins.
+  Model calibration was performed on the Calibration set so that predicted probabilites could be used as a confidence level to support decision making. One usage could be to develop a fraudulent review process with three sub-processes or procedures based on Low, Medium and High probability groups so that there are different levels of due dilligence or prioritization of work. Below are the reliability diagrams which are plotted with three bins.
   
   **Reliability Diagrams - Low Amount dataset**
   
@@ -288,7 +288,7 @@ XGB and HGBT are ensembles, and it requires a little more effort to interpret th
 
 ### 6.3 Train and Select models on the High Amount dataset
 
-Given the nature of the High Amount dataset (e.g. the presence of strongly correlated relationships) , two models, DT and LR models, were built for the High Amount dataset. **Both models achieved 100% accuracy**. 
+Given the nature of the High Amount dataset (e.g. the presence of strongly correlated relationships), two models, DT and LR models, were built for the High Amount dataset. **Both models achieved 100% accuracy**. 
 
 ![scores4](images/scores_full_test_high_amount.png)
 
@@ -421,7 +421,7 @@ On the High Amount dataset, **DT** was selected with a perfect score of **100% A
 
 **Next steps:**
 
-The project can be continued by implementing the last step of CRISP-DM which is deployment. The trained eXtreme Gradient Boosting (XGB) model or Decision Trees (DT) model could be used to detect fraudulent attempts depending on whether the transactional amount is below USD 1,000 or greater, equal to USD 1,000. In addition, a business process could be developed to handle transactions that are detected and flagged as fraudulent transactions by the models. As the models have been calibrated, predicted probabilities could be used to design different fraudulent management procedures based on Low, Medium and High probabilities. Lastly, the model could be continuing monitored in production and improved. The improvement process could be facilitated by probability-based investigation to identify potential areas for improvement and to estimate the return of investment.
+The project can be continued by implementing the last step of CRISP-DM which is **deployment**. The trained eXtreme Gradient Boosting (XGB) model or Decision Trees (DT) model could be used to detect fraudulent attempts depending on whether the transactional amount is below USD 1,000 or greater, equal to USD 1,000. In addition, a **business process** could be developed to handle transactions that are detected and flagged as fraudulent transactions by the models. Different fraudulant management procedures could be used based on the predicted probabilites of High, Medium and Low (since the models have been calibrated). Lastly, the model could continue to be **monitored and improved in production**. The improvement process could be facilitated by probability-based investigation to identify potential areas for improvement and to estimate the return of investment.
 
 ## 8. Jupyter Notebook
 
