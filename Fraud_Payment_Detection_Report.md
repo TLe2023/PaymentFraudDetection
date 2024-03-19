@@ -362,7 +362,9 @@ The above confusion matrix can be summarized as follows:
   ![fig16](images/classification_report.png)
 
 **DT Confusion Matrix - High Amount dataset**
+
 ![fig16](images/confusionmatrix_dt_high_amount.png)
+
 The above confusion matrix shows that the model correctly classified all instances in the test set. The scores are summarized in the classification report below:
 
 ![fig17](images/classification_report_high_amount.png)
