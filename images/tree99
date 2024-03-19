@@ -2,95 +2,77 @@ digraph {
     graph [ rankdir=TB ]
     graph [ rankdir="LR" ]
 
-    0 [ label="f7<0.0219495688" ]
+    0 [ label="Sender_Cat_CLIENT<0.0043527633" ]
     0 -> 1 [label="yes" color="#FF0000"]
     0 -> 2 [label="no, missing" color="#0000FF"]
 
-    1 [ label="f7<0.0213824324" ]
+    1 [ label="Sender_Country<0.0100422753" ]
     1 -> 3 [label="yes" color="#FF0000"]
     1 -> 4 [label="no, missing" color="#0000FF"]
 
-    3 [ label="f6<0.0208170991" ]
+    3 [ label="Sender_Account<0.0478154533" ]
     3 -> 7 [label="yes" color="#FF0000"]
     3 -> 8 [label="no, missing" color="#0000FF"]
 
-    7 [ label="f0<829.937683" ]
-    7 -> 15 [label="yes" color="#FF0000"]
-    7 -> 16 [label="no, missing" color="#0000FF"]
+    7 [ label="Bene_Country<0.0224163365" ]
+    7 -> 13 [label="yes" color="#FF0000"]
+    7 -> 14 [label="no, missing" color="#0000FF"]
 
-    15 [ label="leaf=0.0332678482" ]
+    13 [ label="leaf=-0.126133934" ]
 
-    16 [ label="leaf=0.450147569" ]
+    14 [ label="leaf=-1.01224649" ]
 
-    8 [ label="f0<947.363953" ]
-    8 -> 17 [label="yes" color="#FF0000"]
-    8 -> 18 [label="no, missing" color="#0000FF"]
+    8 [ label="USD_amount<444.772644" ]
+    8 -> 15 [label="yes" color="#FF0000"]
+    8 -> 16 [label="no, missing" color="#0000FF"]
 
-    17 [ label="leaf=-0.000681365083" ]
+    15 [ label="leaf=-0.57634753" ]
 
-    18 [ label="leaf=-0.206803501" ]
+    16 [ label="leaf=1.12363267" ]
 
-    4 [ label="f8<0.0327167027" ]
+    4 [ label="USD_amount<100.769997" ]
     4 -> 9 [label="yes" color="#FF0000"]
     4 -> 10 [label="no, missing" color="#0000FF"]
 
-    9 [ label="f5<0.00408875104" ]
-    9 -> 19 [label="yes" color="#FF0000"]
-    9 -> 20 [label="no, missing" color="#0000FF"]
+    9 [ label="Sender_Country<0.0269133002" ]
+    9 -> 17 [label="yes" color="#FF0000"]
+    9 -> 18 [label="no, missing" color="#0000FF"]
 
-    19 [ label="leaf=0.270099849" ]
+    17 [ label="leaf=0.0518185906" ]
 
-    20 [ label="leaf=0.60611999" ]
+    18 [ label="leaf=-0.277436525" ]
 
-    10 [ label="f6<0.0208373498" ]
-    10 -> 21 [label="yes" color="#FF0000"]
-    10 -> 22 [label="no, missing" color="#0000FF"]
+    10 [ label="USD_amount<100.900002" ]
+    10 -> 19 [label="yes" color="#FF0000"]
+    10 -> 20 [label="no, missing" color="#0000FF"]
 
-    21 [ label="leaf=-0.503060877" ]
+    19 [ label="leaf=-0.222101003" ]
 
-    22 [ label="leaf=0.188257784" ]
+    20 [ label="leaf=-0.00483637908" ]
 
-    2 [ label="f6<0.0208170991" ]
+    2 [ label="Sender_Cat_CLIENT<0.996346653" ]
     2 -> 5 [label="yes" color="#FF0000"]
     2 -> 6 [label="no, missing" color="#0000FF"]
 
-    5 [ label="f6<0.0188006163" ]
-    5 -> 11 [label="yes" color="#FF0000"]
-    5 -> 12 [label="no, missing" color="#0000FF"]
+    5 [ label="leaf=1.09571099" ]
 
-    11 [ label="f9<0.020944301" ]
-    11 -> 23 [label="yes" color="#FF0000"]
-    11 -> 24 [label="no, missing" color="#0000FF"]
+    6 [ label="Bene_Account<0.12152195" ]
+    6 -> 11 [label="yes" color="#FF0000"]
+    6 -> 12 [label="no, missing" color="#0000FF"]
 
-    23 [ label="leaf=0.0504308045" ]
+    11 [ label="Sender_Account<0.0926828012" ]
+    11 -> 21 [label="yes" color="#FF0000"]
+    11 -> 22 [label="no, missing" color="#0000FF"]
 
-    24 [ label="leaf=-0.0595809892" ]
+    21 [ label="leaf=0.0212867409" ]
 
-    12 [ label="f0<208.378159" ]
-    12 -> 25 [label="yes" color="#FF0000"]
-    12 -> 26 [label="no, missing" color="#0000FF"]
+    22 [ label="leaf=0.180305213" ]
 
-    25 [ label="leaf=0.237291828" ]
+    12 [ label="Sender_Country<0.0208880045" ]
+    12 -> 23 [label="yes" color="#FF0000"]
+    12 -> 24 [label="no, missing" color="#0000FF"]
 
-    26 [ label="leaf=-0.42197749" ]
+    23 [ label="leaf=-0.547336698" ]
 
-    6 [ label="f8<0.0277621001" ]
-    6 -> 13 [label="yes" color="#FF0000"]
-    6 -> 14 [label="no, missing" color="#0000FF"]
-
-    13 [ label="f8<0.0275366064" ]
-    13 -> 27 [label="yes" color="#FF0000"]
-    13 -> 28 [label="no, missing" color="#0000FF"]
-
-    27 [ label="leaf=-0.0089956047" ]
-
-    28 [ label="leaf=-0.43302989" ]
-
-    14 [ label="f8<0.0282874517" ]
-    14 -> 29 [label="yes" color="#FF0000"]
-    14 -> 30 [label="no, missing" color="#0000FF"]
-
-    29 [ label="leaf=2.41524458" ]
-
-    30 [ label="leaf=0.00595548423" ]
+    24 [ label="leaf=0.0568980165" ]
 }

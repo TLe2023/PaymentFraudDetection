@@ -8,13 +8,13 @@ To address this business objective, the goal of this project is to build a predi
 
 ## 2. Executive Summary
 
-This publication includes or references synthetic data provided by J.P. Morgan. Exploratory data analysis suggested that the fraudulent rate increases with the increase of the transaction amount. The original large and imbalanced dataset was split into two datasets, a **Low Amount dataset**, and a **High Amount dataset**, with **USD 1,000** - as the threshold between the two datasets; this allows for different strategies of model training and evaluation for each dataset.
+This publication includes or references synthetic data provided by J.P. Morgan. Exploratory data analysis suggested that the fraudulent rate increases with the increase of the transaction amount. The original large and imbalanced dataset was split into two datasets, a **Low Amount dataset**, and a **High Amount dataset**, with **USD 1,000** as the delineation between the two datasets. This allows for different strategies of model training and evaluation for each dataset.
 
-Each dataset was balanced to have the same number of fraudulent and non-fraudulent samples before training the models. Accuracy was used to measure the performance of the models trained in both Low and High Amount datasets. In addition, F1 score (a balance of Precision and Recall) was applied to the Low Amount dataset while F2 score (more weight was placed on Recall) was used to measure the performance of the models trained on the High Amount dataset. Additional measurements and criteria such as ROC-AUC (receiver operating characteristic – area under curve), AP (average precision), speed and interpretability were considered when evaluating the models.
+Each dataset was balanced to have the same number of fraudulent and non-fraudulent samples before training the models. **Accuracy** was used to measure the performance of the models trained in both Low and High Amount datasets. In addition, **F1 score** (a balance of optimistic and pessimistic predictions) was applied to the Low Amount dataset while **F2 score** (a less pessimistic model) was used to measure the performance of the models trained on the High Amount dataset. Additional measurements and criteria such as ROC-AUC (receiver operating characteristic – area under curve), AP (average precision), **speed and interpretability** were considered when evaluating the models.
 
-On the **Low Amount** dataset, **eXtreme Gradient Boosting (XGB)** was selected based on its speed, performance and its acceptable interpretability. It achieved **92% Accuracy score, 92% F1 score, 98% ROC-AUC score** and **98% AP score**. 
+On the **Low Amount** dataset, **eXtreme Gradient Boosting (XGB)** was selected based on its speed, performance and its acceptable interpretability. It achieved **94% Accuracy score, 94% F1 score, 99% ROC-AUC score** and **98% AP score**. 
 
-On the **High Amount** dataset, **Decision Trees (DT)** was selected with **perfect scores** of **100% for Accuracy, F2, ROC-AUC and AP**.
+On the **High Amount** dataset, **Decision Trees (DT)** was selected with **perfect scores** of **100% for Accuracy, F2, ROC-AUC and AP** in addition to its fast speed and ease of interpretation.
 
 ## 3. Methodology
 
@@ -24,13 +24,13 @@ The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is appl
 
 **Phases of the CRISP-DM Process Model for Data Mining**
 
-After understanding the business objectives, the collected data was explored by using visualizations and probability distributions to form initial findings and hypotheses. Then, the data was cleaned and prepared to handle any integrity issues. Features were engineered for modelling. Next, the dataset was split into a Low Amount dataset and a High Amount dataset. Four predictive classification models were built with default parameters with a cross-validation method applied on the Low Amount dataset. They were **Decision Trees (DT), Histogram Gradient Boosting (HGBT), eXtreme Gradient Boosting (XGB), and AdaBoost (AB)** classification models. Two models, **Decision Trees (DT) and Logistic Regression (LR)**, were built on the High Amount dataset. After eliminating one model on Low Amount dataset, the remaining three models were fine-tuned with optimal parameters. Lastly, these models or classifiers were compared so that the best model, based on a set of predefined criteria, would be evaluated and recommended.
+After understanding the business objectives, the collected data was explored by using visualizations and probability distributions to form initial findings and hypotheses. Then, the data was cleaned and prepared to handle any integrity issues. Features were engineered for modelling. Next, the dataset was split into a Low Amount dataset and a High Amount dataset. Four predictive classification models were built with default parameters and with a cross-validation method applied on the Low Amount dataset. They were **Decision Trees (DT), Histogram Gradient Boosting (HGBT), eXtreme Gradient Boosting (XGB), and AdaBoost (AB)** classification models. Two models, **Decision Trees (DT) and Logistic Regression (LR)**, were built on the High Amount dataset. After eliminating one model on Low Amount dataset, the remaining models were fine-tuned with optimal parameters. Lastly, these models or classifiers were calibrated and compared so that the best model, based on a set of predefined criteria, would be evaluated and recommended.
 
 ## 4. Data Understanding
 
 ### 4.1 Data Overview
 
-The synthetic payment dataset was provided by an international financial institution -J.P. Morgan. It describes payment information of 1,495,782 observations. The dataset contains transactional information including payment amount, senders and receivers of a large variety of payment transaction types enriched with labels representing legitimate or fraudulent payments.
+The synthetic payment dataset was provided by an international financial institution - J.P. Morgan. It describes payment information of 1,495,782 observations. The dataset contains transactional information including payment amount, senders and receivers of a large variety of payment transaction types enriched with labels representing legitimate or fraudulent payments.
 
 Below are the attributes and descriptions of the initial data:
 
@@ -67,8 +67,6 @@ Below are the attributes and descriptions of the initial data:
 ![fig3b](images/upper_fence.png)
 
 #### 4.2.2 Target Variable
-
-The name of the target variable or column is changed from “Label” to “Fraud”.
 
 The pie chart below illustrates that the fraudulent rate is only 2%. In other words, 98% of the total number of payment transactions are legitimate and only 2% are fraudulent observations.
 
@@ -124,8 +122,8 @@ USA is the country with the largest total transactional amount in terms of origi
 
 ### 5.1 Data Cleaning and Selection
 
-- **Features Removed:** The "Time_step", Sender_lob" and "Sender_Sector"  were dropped. After the prefixes of the "Transaction_Id", "Sender_Id", "Bene_Id"" were extracted into separated columns called "Transaction_Cat", "Sender_Cat", "Bene_Cat", they were also dropped.
-- **Duplicate observations removed:** After removing the above columns, particular IDs, the dataset presented 2,356 duplicate observations which were dropped.
+- **Features removed:** The "Time_step", Sender_lob" and "Sender_Sector"  were dropped. After the prefixes of the "Transaction_Id", "Sender_Id", "Bene_Id"" were extracted into separated columns called "Transaction_Cat", "Sender_Cat", "Bene_Cat", they were also dropped.
+- **Duplicate and zero amount observations removed:** After removing the above columns, particular IDs, the dataset presented 2,356 duplicate observations which were dropped. In addition, transactions with zero amount were also deleted.
 - **Missing values:** Missing values were imputed as “unknown" and used as one of the categories of the categorical features.
 - **Outliers:** Outliers were detected but were not dropped. Outliers which were equal to or above the upper fence amount of USD 1,000 were split into a separate dataset.
 - **Datasets:** The dataset was split into a Low Amount dataset and a High Amount dataset with USD 1,000 (the upper fence amount) as the threshold. The split will allow employing different strategies to detect fraudulent attempts for each dataset.
@@ -144,7 +142,7 @@ Numeric features were scaled with the MinMaxScaler for Logistic Regression model
 
 #### Balancing the datasets:
 
-The dataset is extremely imbalanced with the minority class ("Fraud") accounting for only 2%. After the dataset was split into the train and test sets, they were balanced before training the models. Over sampling (SMOTE) was used in combination with random under sampling to balance the datasets. After balancing, the Low Amount dataset has more than 600,000 samples and the High Amount dataset has more than 100,000 samples.
+The dataset is imbalanced with the minority class ("Fraud") accounting for only 2%. After the dataset was split into the train, calibration and test sets, they were balanced before training the models. Over sampling (SMOTE) was used in combination with random under sampling to balance the datasets. After balancing, the Low Amount dataset has more than 800,000 samples and the High Amount dataset has more than 100,000 samples.
 
 ![fig9a](images/data_balancing.png)
 
@@ -156,8 +154,7 @@ The dataset is extremely imbalanced with the minority class ("Fraud") accounting
 
 ![fig9](images/corr_matrix.png)
 
-**High Amount Dataset**: In contrast, there are many features with a strong positive correlation with the target variable in the High Amount dataset depicted in the heatmap below. The top four features are USD_amount, Transaction_Cat_MOVE-FUNDS,
-Sender_Country, Sender_Cat_JPMC-CLIENT.
+**High Amount Dataset**: In contrast, there are many features with a strong positive correlation with the target variable in the High Amount dataset depicted in the heatmap below. The top four features are USD_amount, Transaction_Cat_MOVE-FUNDS, Sender_Country, Sender_Cat_JPMC-CLIENT.
 
 ![fig9](images/corr_matrix_high_amount.png)
 
@@ -199,9 +196,9 @@ The number of features were further reduced to ten features with KBest. These fe
   
   - **Fbeta score**: Although Accuracy measurement is simple to interpret, it does not take into account the cost associated with different predictive mistakes. Fbeta score combines Precision and Recall. A model with a high Precision score might not find all the positives (“Fraud”), but the ones classified as positive by the high Precision model are almost certain to be correct. In contrast, a high Recall model would find almost all the positives, but it might incorrectly classify some negative instances (“Legit”) as positive class (“Fraud”).
     
-    There is a trade-off between Precision and Recall. While we would like to have a model to correctly identify and classify a transaction as “Fraud”, we would not want to miss out on too many "Fraud" cases due to a pessimistic model. On the other hand, we would not want to take user experience lightly and hold or delay many payments because the model tries to catch all "Fraud" cases and mistakenly classifies many legitimate transactions as "Fraud".
+    There is a trade-off between Precision and Recall. While we would like to have a model to correctly identify and classify a transaction as “Fraud”, we would not want to miss out on too many "Fraud" cases due to a pessimistic model. On the other hand, we would not want to take customer experience lightly and hold or delay many payments because the model tries to catch all "Fraud" cases and mistakenly classifies many legitimate transactions as "Fraud".
     
-    Fbeta score allows us not only to combine the two competing Precision and Recall scores but also place some weight on Precision or Recall depending on a specific scenario. Given that the fraudulent rate increases with the increase of the transactional amount, more weight was placed on Recall (beta = 2) for the High Amount dataset (e.g. we would like to catch all "Fraud" transactions when the transaction is equal or above USD 1,000 - despite the cost of false positives). In contrast, we would not want to take the user experience lightly and would balance Precision and Recall (beta = 1) for the Low Amount dataset.
+    Fbeta score allows us not only to combine the two competing Precision and Recall scores but also place some weight on Precision or Recall depending on a specific scenario. Given that the fraudulent rate increases with the increase of the transactional amount, more weight was placed on Recall (beta = 2) for the High Amount dataset (e.g. we would like to catch all "Fraud" transactions when the transaction is equal or above USD 1,000 - despite of the cost of false positives). In contrast, we would like to respect the customer experience and would balance Precision and Recall (beta = 1) for the Low Amount dataset.
     
     **F1 measure was used for the Low Amount dataset and F2 measure was used for the High Amount dataset**. They were calculated as follows:
     
@@ -215,7 +212,7 @@ The number of features were further reduced to ten features with KBest. These fe
     
     Recall = (TP) / (TP + FN)
     
-    In addition to the Accuracy and Fbeta scores, the **confusion matrix, the precision-recall curve (average prevision score) and ROC-AUC (receiver operating characteristic – area under curve)** were used to further analyse and evaluate the models.
+    In addition to the Accuracy and Fbeta scores, the **confusion matrix, the precision-recall curve (average presision score) and ROC-AUC (receiver operating characteristic – area under curve)** were used to further analyse and evaluate the models.
 
 - **Other considerations:** In addition to the model performance metrics mentioned above, **speed** or train time and **ease of interpretation** (particularly to regulatory bodies) were also considered when selecting the model.
 
@@ -231,25 +228,25 @@ Model algorithm and selection criteria are summarized in the table below:
 
 - **Model Algorithm:** 
   
-  - **Low Amount dataset**: As there are no features strongly or moderately correlated with the target variable in the Low Amount dataset which has approximately 500,000 samples on the train set, the popular Random Forests (RF) – a bagging ensemble model - is not used. In addition, RF builds multiple deep trees which use lots of computational resources. Four classification models were built for the Low Amount Dataset. They are Decision Trees (DT) and three tree-based boosting ensembles: eXtreme Gradient Boosting (XGB), Histogram Gradient Boosting (HGBT), and AdaBoost (AB). These four models were trained with the default parameters first for elimination. The remaining models were trained with hyper-parameter tuning. 
+  - **Low Amount dataset**: As there are no features strongly or moderately correlated with the target variable in the Low Amount dataset which has approximately 500,000 samples on the train set, the popular Random Forests (RF) – a bagging ensemble model - is not used. RF builds multiple deep trees which use lots of computational resources. Four classification models were built for the Low Amount Dataset. They are Decision Trees (DT) and three tree-based boosting ensembles: eXtreme Gradient Boosting (XGB), Histogram Gradient Boosting (HGBT), and AdaBoost (AB). These four models were trained with the default parameters first for elimination. The remaining models were trained with hyper-parameter tuning. 
   
   - **High Amount dataset**: The High Amount dataset has features strongly or moderately correlated with the target variable and has approximately 100,000 samples. Two models were built and hyper-parameter tuned on this dataset. They are Decision Trees (DT) and Logistic Regression (LR).
 
 - **Hyper-parameter tuning:** Instead of using the exhaustive and computationally expensive grid searching with GridSearchCV, randomized parameter optimization was used to tweak model performance for optimal results due to its fast speed.
 
-- **Cross-validation:** The dataset was split into trained set and test set. When splitting the dataset, the class proportion was preserved with the “stratify” option. The test set was held out for final evaluation. Train dataset was then split into smaller sets to train, tune hyper-parameters, and validate the models as part of the stratified k-fold cross-validation method.
+- **Cross-validation and calibration:** The dataset was split into trained set, calibration set, and test set. When splitting the dataset, the class proportion was preserved with the “stratify” option. The test set was held out for final evaluation. Models were calibrated on the calibration set so that probabilistic prediction could be interpreted as a confidence level. The Train dataset was then split into smaller sets to train, tune hyper-parameters, and validate the models as part of the stratified k-fold cross-validation method. 
 
 ### 6.2 Train and Select Models on the Low Amount dataset
 
 #### 6.2.1 Train and Validate on the Low Amount Train Set
 
-- **Baseline - Train:** Before the models were trained and hyper-parameter tuned on the Low Amount train set, a no-skill model was built to obtain a baseline. Our goal was to have a model which has an accuracy score greater than 50% and the F1 score greater than 27%.
+- **Baseline - Train Set:** Before the models were trained and hyper-parameter tuned on the Low Amount train set, a no-skill model was built to obtain a baseline. Our goal was to have a model which has an accuracy score greater than 50% and the F1 score greater than 13%.
 
-- **Default models - Train:** The below models were built with default options and the results are depicted in the table below. AB provides the lowest score and is the slowest model in terms of training time. It was eliminated. DT has a very decent score but it is slower than XGB because it built a very deep tree - more than 60 in depth.
+- **Default models - Train Set:** The below models were built with default options and the results are depicted in the table below. AB provides the lowest score and is the slowest model in terms of training time. It was eliminated. DT has a very decent score but it is slower than XGB because it built a very deep tree - more than 50 in depth.
 
 ![scores1](images/scores_default.png)
 
-- **Improved models - Train:** Our goal of hyper-parameter tuning is not to beat the above scores of the default models (although it could happen) but rather to balance variance and bias or, in other words, to balance the model complexity and its predictive performance. Below are the results of the three improved models which were trained (with hyper-parameter tuning) and validated on the Low Amount train set. XGB has the highest score, followed by HGBT and then DT. However, it takes more time to arrive at the optimal hyper-parameters for XGB and HGBT compared to DT.
+- **Improved models - Train Set:** Our goal of hyper-parameter tuning is not to beat the above scores of the default models (although it could happen) but rather to balance variance and bias or, in other words, to balance the model complexity and its predictive performance. Below are the results of the three improved models which were trained (with hyper-parameter tuning) and validated on the Low Amount train set. XGB has the highest score, followed by HGBT and then DT. However, it takes more time to arrive at the optimal hyper-parameters for XGB and HGBT compared to DT.
 
 ![scores2](images/scores_improved.png)
 
@@ -259,13 +256,23 @@ Model algorithm and selection criteria are summarized in the table below:
 - **Learning curves**: Given that the original dataset has 1.5 million observations, one question is whether the models would benefit from adding more samples. The learning curves below illustrate that training scores and validation scores converged at about 300,000 samples. Therefore, there would not be much benefit to add more samples.
   ![scale](images/learning_curves.png)
   
-  #### 6.2.2 Evaluate on the Low Amount Test Set
+  #### 6.2.2 Calibrate models on the Low Amount Calibration Set
+  
+  Model calibration was performed on the Calibration set so that predicted probabilites could be used as a confidence level to support decision making. One usage could be to develop a fraudulent review process with three sub-processes or procedures based on Low, Medium and High probability groups. Below are the reliability diagrams which are plotted with three bins.
+  
+  **Reliability Diagrams - Low Amount dataset**
+  
+  The diagrams indicate that the models were almost perfectly calibrated.
+  
+  ![cal1](images/calibration_low_amount.png)
 
-- **Scoring:** The scoring table below illustrates that all three models yielded very decent predictions on the Low Amount test set. XGB and HGBT take the lead in terms of performance, followed by DT.
+#### 6.2.3 Evaluate on the Low Amount Test Set
+
+- **Scoring:** The scoring table below illustrates that all three models yielded very decent predictions on the Low Amount test set. XGB and HGBT take the lead in terms of performance, followed by DT. XGB has the best F1 score.
 
 ![scores3](images/scores_full_test.png)
 
-- **Confusion Matrix:** DT has the highest number of false positives (FP) and the lowest number of false negatives (FN). The confusion matrices of the XGB and HBGT models are alike. However, they present the trade-off between Precision and Recall. While HGBT has the lower number of FN, its FP is higher than that of XGB. The higher FP impacts user experience. In other words, although HGBT correctly classified more "Fraud" cases, it also incorrectly classified more legitimate transactions as "Fraud".
+- **Confusion Matrix:** DT has the highest number of false positives (FP) and the highest number of false negatives (FN). XGB has the lowest number of false positives (FP) and the lowest number of false negatives (FN).
 
 ![fig12](images/confusionmatrix25.png)
 
@@ -273,7 +280,7 @@ Model algorithm and selection criteria are summarized in the table below:
 
 ![fig13](images/compare25.png)
 
-One of the considerable benefits of DT is its ease of interpretation. DT has one decision tree which can be visualized. The decision tree is familiar to all of us given that we create decision trees in our mind every day for many daily decisions such as where to have dinner or what to do this weekend. However, the DT model in this case has a very deep tree structure although it was reduced from more than 60 to below 20 in depth and sacrificed some predictive performance with hyper-parameter tuning. Still, a decision tree with approximately 20 in depth is hard to read.
+One of the considerable benefits of DT is its ease of interpretation. DT has one decision tree which can be visualized. The decision tree is familiar to all of us given that we create decision trees in our mind every day for many daily decisions such as where to have dinner or what to do this weekend. However, the DT model in this case has a very deep tree structure although it was reduced from more than 50 to below 20 in depth and sacrificed some predictive performance with hyper-parameter tuning. Still, a decision tree with approximately 20 in depth is hard to read.
 
 XGB and HGBT are ensembles, and it requires a little more effort to interpret the models. Having said that, they are tree-based ensembles which have multiple decision trees. In addition, XGB has the built-in model feature importance while HGBT lacks this function. XGB also has built-in features to plot the decision trees. That makes its interpretability acceptable when explaining how the model makes decisions to stakeholders, particularly regulatory parties.
 
@@ -285,9 +292,14 @@ Given the nature of the High Amount dataset (e.g. the presence of strongly corre
 
 ![scores4](images/scores_full_test_high_amount.png)
 
+**Reliability Diagrams - High Amount dataset**: Models were perfectly calibrated.
+
+![cal2](images/calibration_high_amount.png)
+They also have a perfect precision-recall curve and ROC curve
+
 ![fig15](images/compare_high_amount.png)
 
-However, the confusion matrix indicates that LR incorrectly classified seven instances. They were legitimate transactions but were incorrectly classified as fraudulent transactions.
+However, the confusion matrix indicates that LR incorrectly classified some instances. They were legitimate transactions but were incorrectly classified as fraudulent transactions.
 
 ![fig14](images/confusionmatrix_high_amount.png)
 
@@ -309,8 +321,8 @@ The tree shows at each step or each node which question was asked, or which rule
 
 Each box or node provides useful information. For example, at the root node or the top box of the tree trained on the High Amount dataset, the algorithm tried all the possibilities to split and determined that the split with "USD_amount \<=5,500.495" is an optimum split which gives the highest information gain or the lowest uncertainty measured by Entropy. The highest Entropy value is 1 and the lowest value is 0. The tree starts at the root node with Entropy = 1 as there is lots of uncertainty at this beginning point. As we travel down the tree, the Entropy reduces in values as more information gain and less uncertainty. Our goal is to reach 0 Entropy which means the node is pure. In addition,
 
-- There are 113,264 observations (‘samples=113264’) at the root node as we have 113,264 observations in the test set.
-- "value =  [56632, 56632]'' provides the partition of these observations between two possible classes. In this case, the number of samples in each class are the same: 56,632
+- There are 84,948 observations (‘samples=84948’) at the root node as we have 84,948 observations in the test set.
+- "value =  [42474, 42474]'' provides the partition of these observations between two possible classes. In this case, the number of samples in each class are the same: 42,474
 - ‘class = 'Legit’. This is the class predicted by the Decision Tree at the root node.
 
 The split is also illustrated in the decision boundary below:
@@ -341,8 +353,8 @@ The key difference between the tree in the XGB ensemble of the Low Amount datase
 
 The above confusion matrix can be summarized as follows:
 
-- In the test set, there are 61,344 positive or "Fraud” observations and the model correctly predicted 55,672 instances but missed 5,672 positive instances.
-- Of 61,344 negative or "Legit" instances, it correctly classified 57,481 observations and incorrectly classified 3,863 observations.
+- In the test set, there are 83,651positive or "Fraud” observations and the model correctly predicted 75,515 instances but missed 8,136 positive instances.
+- Of 83,651 negative or "Legit" instances, it correctly classified 81,818 observations and incorrectly classified 1,833 observations.
 - The Precision, Recall, F1 scores are summarized below 
   ![fig16](images/classification_report.png)
 
@@ -366,9 +378,13 @@ The top two features that influenced the model developed for the High Amount dat
 
 **XGB Feature Importance - Low Amount dataset**
 
-The selected model of the Low Amount dataset is an ensemble with a tree-based estimator. It also allows us to obtain the feature importance directly from the model. There are five types of importance. The features influenced the model, calculated by each important type, are plotted below.
+The selected model of the Low Amount dataset is an ensemble with a tree-based estimator. It also allows us to obtain the feature importance directly from the model. There are five types of importance. The degree a feature influenced the model, calculated by each important type, are plotted below.
 
 ![fig19](images/feature_importance_mdi.png)
+
+Below is the decision boundary for two features: Sender_Account and Transaction_Cat_Payment, which are the two most important features calculated by the "gain" method.
+
+![decisionboundery](images/decision_boundary.png)
 
 ### 7.4 Permutation feature importance
 
@@ -386,7 +402,7 @@ Features that are important on the trained set but not on the test set might cau
 
 **XGB permutation feature importance - Low Amount dataset:**
 
-Below are the results of permutation importance computed on both the train set and the test set for the selected model. The top three features are **"Sender_Account”**, **"Bene_Account"** and **"Sender_Country"**. The results are consistent with that of the "Total Gain" model feature importance method.
+Below are the results of permutation importance computed on both the train set and the test set for the selected model. The top three features are **"Sender_Country", "Bene_Account", and "Sender_Account”**. 
 
 ![fig20](images/permutation.png)
 
@@ -394,13 +410,13 @@ Below are the results of permutation importance computed on both the train set a
 
 To detect fraudulent attempts, this publication includes or references synthetic data provided by J.P. Morgan. The dataset with approximately 1.5 million observations was explored and split into a Low Amount dataset (below USD 1,000) and a High Amount dataset (at or above USD 1,000). The two datasets were transformed and balanced before training multiple models for selection. These models were evaluated with a set of pre-defined selection criteria. They are **speed, ease of interpretation and performance metrics (Accuracy, F-measure, AP and ROC-AUC)**.
 
-On the balanced Low Amount dataset, **XGB** was selected. It achieved  **92% Accuracy, 92% of F1 and 98% of AP and ROC-AUC**. The top three features that influenced the model are **the account and the country of the Sender** ( "Sender_Account”, "Sender_Country" atributes) and **account of the beneficiary** ("Bene_Account" attribute).
+On the balanced Low Amount dataset, **XGB** was selected. It achieved  **94% Accuracy, 94% of F1 and 99% of AP and 98% of ROC-AUC**. The top three features that influenced the model are **the account and the country of the Sender** ( "Sender_Account”, "Sender_Country" atributes) and **account of the beneficiary** ("Bene_Account" attribute).
 
 On the High Amount dataset, **DT** was selected with a perfect score of **100% Accuracy, F2, AP and ROC-AUC**. The top two features that influenced the selected model the most are the **transactional amount** ("USD_amount” attribute) and the **JPMC Client type of client** ("Sender_Cat_JPMC_Client" attribute).
 
 **Next steps:**
 
-The project can be continued by implementing the last step of CRISP-DM which is deployment. The trained eXtreme Gradient Boosting (XGB) model or Decision Trees (DT) model could be used to detect fraudulent attempts depending on whether the transactional amount is below USD 1,000 or greater, equal to USD 1,000. In addition, a business process could be developed to handle transactions that are detected and flagged as fraudulent transactions by the models. 
+The project can be continued by implementing the last step of CRISP-DM which is deployment. The trained eXtreme Gradient Boosting (XGB) model or Decision Trees (DT) model could be used to detect fraudulent attempts depending on whether the transactional amount is below USD 1,000 or greater, equal to USD 1,000. In addition, a business process could be developed to handle transactions that are detected and flagged as fraudulent transactions by the models. As the models have been calibrated, predicted probabilities could be used to design different fraudulent management procedures based on Low, Medium and High probabilities. Lastly, the model could be continuing monitored in production and improved. The improvement process could be facilitated by probability-based investigation to identify potential areas for improvement and to estimate the return of investment.
 
 ## 8. Jupyter Notebook
 
