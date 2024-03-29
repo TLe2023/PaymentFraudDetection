@@ -49,9 +49,9 @@ The project can be continued by implementing the last step of CRISP-DM which is 
 #### Outline of project
 
 - [Fraud Payment Detection - Report](Fraud_Payment_Detection_Report.md)
-- [Fraud Payment Detection - EDA](Fraud_Detection_EDA_Final.ipynb)
-- [Fraud Payment Detection - Low Amount](Fraud_Detection_Low_Amount_Final.ipynb)
-- [Fraud Payment Detection - High Amount](Fraud_Detection_High_Amount_Final.ipynb)
+- Fraud Payment Detection - EDA - Jupyter Notebook
+- Fraud Payment Detection - Low Amount - Jupyter Notebook
+- Fraud Payment Detection - High Amount - Jupyter Notebook
 
 ##### Contact and Further Information
 
