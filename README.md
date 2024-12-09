@@ -53,6 +53,3 @@ The project can be continued by implementing the last step of CRISP-DM which is 
 - Fraud Payment Detection - Low Amount - Jupyter Notebook
 - Fraud Payment Detection - High Amount - Jupyter Notebook
 
-##### Contact and Further Information
-
-Tam Le - tam.th.le@gmail.com - 415 424 6799
